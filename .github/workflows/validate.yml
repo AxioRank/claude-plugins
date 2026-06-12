@@ -1,0 +1,43 @@
+name: Validate plugin
+
+# Runs the official `claude plugin validate` on every push and pull request to
+# catch schema or frontmatter errors in the marketplace catalog and each plugin.
+#
+# It is a local, offline schema check: no API key, no login, and no secrets are
+# required. We intentionally do NOT pass `--strict`, because the plugin omits an
+# explicit `version` on purpose (it uses the git commit SHA so every push is a
+# new version). `--strict` would turn that benign "no version" warning into a
+# failure. Without it, only real errors (bad JSON, missing required fields,
+# invalid frontmatter) fail the build.
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: claude plugin validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Validate the marketplace catalog
+        run: npx -y @anthropic-ai/claude-code@latest plugin validate .
+
+      - name: Validate each plugin
+        run: |
+          set -euo pipefail
+          for dir in plugins/*/; do
+            echo "::group::validate ${dir}"
+            npx -y @anthropic-ai/claude-code@latest plugin validate "${dir}"
+            echo "::endgroup::"
+          done
