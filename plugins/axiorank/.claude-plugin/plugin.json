@@ -1,0 +1,17 @@
+{
+  "name": "axiorank",
+  "description": "Zero-Trust guardrails for Claude Code: scan tool calls and edits for leaked secrets, prompt injection, PII, and destructive operations with AxioRank's keyless engine.",
+  "author": {
+    "name": "AxioRank"
+  },
+  "homepage": "https://axiorank.com",
+  "repository": "https://github.com/AxioRank/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "security",
+    "zero-trust",
+    "secrets",
+    "prompt-injection",
+    "guardrails"
+  ]
+}

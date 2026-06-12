@@ -1,0 +1,23 @@
+{
+  "name": "axiorank",
+  "owner": {
+    "name": "AxioRank"
+  },
+  "description": "Zero-Trust security for AI coding agents. Catch leaked secrets, prompt injection, PII, and destructive tool calls. No key required.",
+  "plugins": [
+    {
+      "name": "axiorank",
+      "source": "./plugins/axiorank",
+      "description": "Inspect tool calls and edits for leaked secrets, prompt injection, PII, and destructive operations using AxioRank's local detectors. No signup.",
+      "category": "security",
+      "keywords": [
+        "security",
+        "zero-trust",
+        "secrets",
+        "prompt-injection",
+        "guardrails",
+        "agents"
+      ]
+    }
+  ]
+}

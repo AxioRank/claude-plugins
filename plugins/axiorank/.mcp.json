@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "axiorank": {
+      "type": "http",
+      "url": "https://app.axiorank.com/api/mcp-server/mcp",
+      "headers": {
+        "Authorization": "Bearer ${AXIORANK_KEY}"
+      }
+    }
+  }
+}
